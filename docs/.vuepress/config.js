@@ -1,7 +1,7 @@
 module.exports = {
   title: 'ERS Documentation',
   description: 'How toes, Usage documentation, Coding guidelines: general principles, C#, Javascript and Vuejs.',
-  base: '/',
+  base: '/ers-documentation/',
   head: [
     ['link', { rel: 'icon', href: '/ers-logo.png' }]
   ],
