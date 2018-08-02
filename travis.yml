@@ -1,19 +1,9 @@
 language: node_js
-node_js:
-  - "10"
-env:
-  - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-bundler_args: --retry 5
-before_install:  
+install:
+  - npm install
+script:
   - npm install -g npm
   - npm install -g vuepress
-script:
   - npm run docs:build
 cache:
   directories:
@@ -27,5 +17,6 @@ deploy:
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   repo: EuropeanRespiratorySociety/ers-documentation
   keep-history: true
+  target-branch: master
   on:
     branch: master
