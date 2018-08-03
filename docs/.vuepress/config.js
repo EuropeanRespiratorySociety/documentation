@@ -28,9 +28,13 @@ module.exports = {
       }
     ],
     sidebar: [{
-      title: 'Usage',
+      title: 'Cloud CMS',
       children: [
-        '/'
+        ['/cloud-cms/', 'Cloud CMS'],
+        ['/cloud-cms/create-or-edit-an-article', 'Create or Edit an Item'],
+        ['/cloud-cms/edit-an-image', 'Edit an image'],
+        ['/cloud-cms/events-calendar', 'Events Calendar'],
+        ['/cloud-cms/publish-a-notification', 'Notifications'],
       ]
     },
     {
