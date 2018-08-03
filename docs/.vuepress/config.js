@@ -6,7 +6,10 @@ module.exports = {
     ['link', { rel: 'icon', href: '/ers-logo.png' }]
   ],
   markdown: {
-    toc: { includeLevel: [2, 3] }
+    toc: { includeLevel: [2, 3] },
+    config: md => {
+      md.use(require('markdown-it-checkbox'))
+    }
   },
   themeConfig: {
     displayAllHeaders: true,

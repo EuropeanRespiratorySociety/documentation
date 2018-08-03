@@ -34,7 +34,7 @@ The structure is intended to organise logically the code.
   ├── e2e
   └── unit
 ```
-### Components
+## Components
 Components organsie the code by functionnality and exist to maximize code reuse.
 ```
 ├── base
@@ -73,9 +73,11 @@ export default {
   }
 };
 ```
+::: tip
 the `h()` rendering function is a __convention__ 
+:::
 
-### Vuex 
+## Vuex 
 Vuex is the the data store for the application, its the data layer. API calls happen in action files. Vuex is organised in modules. Each modules somewhat reflects the components structure.
 ```
 ├── modules
@@ -94,7 +96,7 @@ Each module should be:
 * name spaced
 * imported in the main store
 
-```js
+```js{4}
     import moduleName from "./modules/module-name/store";
     export default new Vuex.Store({
         modules: {
@@ -104,10 +106,10 @@ Each module should be:
 
 `moduleName` will be the name space of the module. More on this below.
 
-#### Actions
+### Actions
 Actions can be asynchronous. This is typically where API calls are done. Here is an example of an HTTP request that requires authentication.
 
-```js
+```js{1,5}
 export const getArticle = async ({ commit, rootState, state }) => {
   const type = state.type;
   const route = `training-data?type=${type}`;
@@ -129,7 +131,7 @@ export const getArticle = async ({ commit, rootState, state }) => {
 ```
 Each action needs to be exported in order to be usable elsewhere in the app, notice the `async/await` keywords. `sureThing()` is a wrapper for HTTP requests catches errors. It allows to clean up functions.
 
-#### Getters
+### Getters
 Getters are simple functions that transforms reactivly the data that is in the store.
 ```js
 export const interestsMethods = state => {
@@ -142,12 +144,12 @@ export const interestsMethods = state => {
 };
 ```
 Getters also need to be exported. To be available. 
-#### Mutations Types
+### Mutations Types
 Mutations Types allow to change the names of mutation and to set them in one place. This also serves as "documentations" as it list all the available mutations in a condensed manner.
 ```js
 export const SET_USER = "SET_USER";
 ```
-#### Mutations
+### Mutations
 Mutations are synchronus. They just commit or save data to the store.
 ```js
 export default {
@@ -157,7 +159,7 @@ export default {
   // ...
 ```
 You can do some transformation and or logic before saving if necessary. For example set a modification timestamp etc. 
-#### Store
+### Store
 The store puts together actions, mutations and getters here is an example:
 ```js
 import * as actions from "./actions";
@@ -197,7 +199,7 @@ Commit data to an other store:
 ```js
 commit("nameSpace/TYPE", data, { root: true })
 ```
-#### Import States, Getters, Actions in a vue compoenent
+### Import States, Getters, Actions in a vue compoenent
 Vuex comes with nice short cuts to import methods
 ```js
 import { mapActions, mapGetters, mapState } from "vuex";
@@ -215,7 +217,7 @@ export default {
     }
 
 ```
-### Filters
+## Filters
 Filters are very useful as the allow to transform data just before displaying it `{{ stringVariable | toUppercase }}`. The `index.js` file is the main entry point of this module and just import and exports all the filters.
 ```
 ├── index.js
@@ -229,11 +231,11 @@ import { upperCase, uperCaseEachWords, uperCaseFirstLetter } from "./toUpper";
 export { slugify, upperCase, uperCaseEachWords, uperCaseFirstLetter };
 ```
 This is important as it allows to import only what is necessary and therefore keep to the minimum the size of a component.
-### Helpers
+## Helpers
 
-### Plugins
+## Plugins
 
-### Router
+## Router
 The router maps routes to components and applyse 'guards' to protect routes and redirect when necessary. If the router gets too big, it can be split in modules.
 The `paths.js` is used to generate the main navigation. The idea is that this was replaced by an API call and the returned data cached locally. One of the @TODO is to generate routes based on the `path.js`
 ```
@@ -241,7 +243,6 @@ The `paths.js` is used to generate the main navigation. The idea is that this wa
 └── paths.js
 ```
 
-# Style Guide
 ## ESLint
 Never disable eslint rules unless you have a good reason. You may see a lot of legacy files with /* eslint-disable some-rule, some-other-rule */ at the top, but legacy files are a special case. Any time you develop a new feature or refactor an existing one, you should abide by the eslint rules.
 

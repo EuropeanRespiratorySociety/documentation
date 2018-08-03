@@ -1,5 +1,4 @@
 # Cloud CMS
-
 Cloud CMS is a content management system and is used to manage the following content:
 
 * News

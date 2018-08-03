@@ -61,7 +61,7 @@ There are two types: `Article` and `Link`. `Article` will let you choose an arti
 These options will target user by interests (Diseases and Methods). Select any of them and all people that have one interest that match will be targeted. Consider this selection as an OR. If you select ERS members and a few interests, then it will limit each interest to ERS members (same thing for myERS account holders)
 
 The following schema describes what has been described above as ensembles: 
-![Groups](./img/notifications/notification-groups.png) 
+![Groups](./img/notifications/notification-175.png) 
 
 Examples: 
 `Airway disesase` OR `Thoracic Oncology`. 
@@ -76,18 +76,26 @@ After sending a notification, you will have some feedback in the comment section
 There you will find different comments:
 
 1. Everything went well:
-    ![Sucess](./img/notifications/sucess.png)  
+
+    ![Sucess](./img/notifications/sucess.png) 
+
     The string in the red box is the id that I would need to cancel the scheduled notification
-2. Not allowed 
+2. Not allowed
+
     ![Not Allowed](./img/notifications/not-allowed.png) 
+
 The user name of the person who attempted to send a notification will be written in the comment box
 3. Attempting to re send a notification will trigger this comment:
-    ![Aborting](./img/notifications/aborting.png) 
+
+    ![Aborting](./img/notifications/aborting.png)
+
 4. I there are any other error, they will also be printed in comments, please let me know if something happens.
 
+::: tip
 Note that I have changed the icon for the sake of clarity. Comments written by the API now look like this:
+
 ![Nice icon](./img/notifications/api-notifications.png) 
- 
+:::
 
 Allowed users
 The following users can send notifications (new user can be added)
@@ -96,9 +104,10 @@ The following users can send notifications (new user can be added)
 3.	Tamaki
 4.	Stéphane
 5.	Samuel
+
 The main users of this feature should be Dawn and Beth, we are in this list to cover for vacation and/or unavailability of someone from the communication team.
 
-TODOS
+### TODOS
 * [ ] Implement cancellation from CMS
 * [ ] If needed implement more filtering options and conditional rules
 * [ ] For now, we can send programmatically notifications to ERS IDs this is potentially very interesting as we can target people when their membership expires, when they have a new certificate, when their abstracts are accepted and so on. I could also add this to the UI. There is a small complexity, we need to know if the user has the app installed or not. (We have the info, we just need to find a way to share, maybe add to the CRM)

@@ -2,5 +2,8 @@
     "scripts": {
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs"
+    },
+    "dependencies": {
+        "markdown-it-checkbox": "^1.1.0"
     }
 }

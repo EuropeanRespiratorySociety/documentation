@@ -5,7 +5,7 @@ heroImage: /ers-logo.png
 ## How to
 
 ## Usage
-* Cloud CMS
+* [Cloud CMS](/cloud-cms/)
 * MyCrm
 
 ## Coding Guidelines
