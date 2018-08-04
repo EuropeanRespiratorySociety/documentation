@@ -8,7 +8,61 @@ The arrow function is very helpful to write consise code. They are called "Fat a
 
 So with arrow functions, we do not have to type the `function` and the `return` keyword.
 
+The fat arrow cannot blindly replace function declarations. Basically everytime you need to access `this` of the current environement which is traditionally passed down with `const self = this` you can replace it by an arrow function. 
+
+```js
+const obj = {
+  prop: 'test',
+  foo: function () {
+    const self = this
+    bar()
+    function bar() {
+      console.log(self)
+    }
+  }
+}
+obj.foo() // { prop: 'test', foo: [Function: foo] }
+```
+There are three JavaScript methods that can be use to bind the context `call()`, `apply()` and `bind()`. They are quite similar. The difference is that unlike the two others `bind()` is not called immediately but returns a closure.
+
+Same result but with the fat arrow.
+```js
+const obj = {
+  prop: 'test',
+  foo: function () {
+    const bar = () => {
+      console.log(this)
+    }
+    bar()
+  }
+}
+obj.foo()
+// { prop: 'test', foo: [Function: foo] }
+```
+`this` did behave like we expected. Additionnaly, arrow function cannot 
+* be called with `new`
+* be called with `bind()` or `call()`
+
+Arrow functions are only __callable__ and class functions are only __constructors__ while function expression are both.
+
+We have seen that arrow function cannot use `bind()`. When Vuejs creates a component instance, it uses `bind()` behind the scene. Therefore we need to declare methods with function expressions:
+
+```js
+  methods: {
+    someFunction() { 
+      // at the moment, `this` points to the `methods` object that the function is defined in.
+    },
+    someOtherFunction() {
+      this.someFunction(); // this should give an error
+    }
+
+  }
+```
+But when the component is instanciated, `this` is bound to the component instance and not anymore to the methods object wich allows to call `this.someFunction()` or `this.nameOfAVariable()`
+
+
 ## The this Context
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 In an object, a method will behave has we expect
 
 In objects, this
@@ -138,57 +192,6 @@ const obj3 = {
 obj3.foo() // window
 ```
 Yes, again the function `bar()` is unbound, this means that `this` refers to the window object. One of the method bind the context is to create a variable called by convention `self` and pass it down as a closure.
-
-```js
-const obj3 = {
-  prop: 'test',
-  foo: function () {
-    const self = this
-    bar()
-    function bar() {
-      console.log(self)
-    }
-  }
-}
-obj3.foo() // { prop: 'test', foo: [Function: foo] }
-```
-There are three JavaScript methods that can be use to bind the context `call()`, `apply()` and `bind()`. They are quite similar. The difference is that unlike the two others `bind()` is not called immediately but returns a closure.
-
-Now the fat arrow cannot blindly replace function declarations. Basically everytime you need to access `this` of the current environement which we passed down with `const self = this` you can replace it by an arrow function. 
-
-```js
-const obj3bis = {
-  prop: 'test',
-  foo: function () {
-    const bar = () => {
-      console.log(this)
-    }
-    bar()
-  }
-}
-obj3bis.foo()
-// { prop: 'test', foo: [Function: foo] }
-```
-This did behave like we expected. Additionnaly, arrow function cannot 
-* be called with `new`
-* be called with `bind()` or `call()`
-
-Arrow functions are only __callable__ and class functions are only __constructors__ while function expression are both.
-
-We have seen that arrow function cannot use `bind()`. When Vuejs creates a component instance, it uses `bind()` behind the scene. Therefore we need to declare methods with function expressions:
-
-```js
-  methods: {
-    someFunction() { 
-      // at the moment, `this` points to the `methods` object that the function is defined in.
-    },
-    someOtherFunction() {
-      this.someFunction(); // this should give an error
-    }
-
-  }
-```
-But when the component is instanciated, `this` is bound to the component instance and not anymore to the methods object wich allows to call `this.someFunction()` or `this.nameOfAVariable()`
 
 ## Closures
 
