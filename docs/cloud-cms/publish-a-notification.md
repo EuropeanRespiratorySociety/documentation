@@ -31,7 +31,7 @@ The title and the body are displayed as follow:
 * (2) Body
 The `title` is limited to `50` characters and the `body` to `100`.  The spotme icon will be changed to an ERS one in an upcoming build.
 
-## Notification Type
+## Notification Type
 
 There are two types to choose from `push` and `schedule`. Push notification are sent right away, to everyone who matches (see below). There is no way back for push notifications when the `publish` tick box is checked and you save the content item the notification is sent.
 
