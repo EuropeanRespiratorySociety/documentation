@@ -5,13 +5,15 @@ Only certain users of the CMS can send notifications. You can request "notificat
 Notifications can be found under `content -> notifications`
 ![notifications](./img/notifications/Cloud_CMS_notifications.png)
  
-## Create a notification
+## Create a notification
+
 Notifications can be created as with any other content type by clicking on Create Content
 ![Notification forms](./img/notifications/Notifications-form.png)
 
 Fill in the form as you would for an article (details of the field below). Note that the notification will __not be sent__ when you click on the create button. The reason is to prevent sending inadvertently notifications. Therefore, when the notification has been created, open it, review it and make sure everything is as you intended, change the setting of the publish tick box and save the notification. Saving the notification associated with the publish tick box, sends/schedules it.
 
 ## Publish / Sent
+
 When the notification is created it is a draft, nothing is sent until the notification is changed (updated by saving it again) and the `publish` tick box is checked. The workflow is to leave `publish` unchecked, fill in the form and hit create. Then open the created notification, review it and make sure there is no mistake, then check the `publish` tick box and save the content item. The action of saving the content item with the `publish` check box `checked` triggers the notification. There is no way back. (more on this later)
 
 The `sent` property is a “system” property and it will prevent sending the same notification twice. It cannot be changed, and it is updated when the notification has been successfully sent.
@@ -21,7 +23,8 @@ Let’s now see all the options:
  
 This is a notification that has already be sent (the `sent` checkbox is checked)
 
-## Title / Body
+## Title / Body
+
 The title and the body are displayed as follow:
 ![Notification on Phone](./img/notifications/notification-screen.png) 
 * (1) Title
@@ -29,13 +32,16 @@ The title and the body are displayed as follow:
 The `title` is limited to `50` characters and the `body` to `100`.  The spotme icon will be changed to an ERS one in an upcoming build.
 
 ## Notification Type
+
 There are two types to choose from `push` and `schedule`. Push notification are sent right away, to everyone who matches (see below). There is no way back for push notifications when the `publish` tick box is checked and you save the content item the notification is sent.
 
 You can schedule notification, they will be sent to the users in __their time zone__, in order for the scheduling to work, notification need to be scheduled __at least 24 hours in advance__. Scheduled notification can be cancelled, for now there is no integrated way of doing this, but you can send me the `id` (see below) of the notification and I will cancel it manually.
 
 If the `schedule` option is selected a date/time fields appears with a picker when you click on it. You can select the date, then by clicking on the clock icon at the bottom of the calendar, select the time of the notification:
 ![Notification on Phone](./img/notifications/date-picker.png) 
+
 ## Channels
+
 There are, for now 5 channels:
 1.	Alerts
 2.	ERS events
