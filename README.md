@@ -7,6 +7,8 @@ $ git clone <this repo> <target folder>
 ```
 
 ```
+$ npm install
+
 $ npm install -g vuepress
 ```
 
